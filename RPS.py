@@ -1,10 +1,20 @@
-# The example function below keeps track of the opponent's history and plays whatever the opponent played two plays ago. It is not a very good player so you will need to change the code to pass the challenge.
+import random
 
-def player(prev_play, opponent_history=[]):
+def player(prev_play, opponent_history=[], playerDetected=["" , False]):
     opponent_history.append(prev_play)
 
-    guess = "R"
-    if len(opponent_history) > 2:
-        guess = opponent_history[-2]
+    # Quincy strategy #
+    QuincyChoices = ["R", "R", "P", "P", "S"]
+    if (not playerDetected[1]) and (len(opponent_history) > 5):
+        diff = [ord(q0) - ord(qn) for q0, qn in zip(QuincyChoices, opponent_history[-5:-1])]
+        if (sum(diff) == 0):
+            playerDetected[1] = True
+            playerDetected[0] = "quincy"
+
+
+    if (playerDetected[1]):
+        if (playerDetected[0] == "quincy"): guess = QuincyChoices[(len(opponent_history)+2) % len(QuincyChoices)]
+    else:
+        guess = random.choice(["R", "P", "S"])
 
     return guess
