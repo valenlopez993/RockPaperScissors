@@ -1,20 +1,27 @@
 import random
+import numpy as np
 
-def player(prev_play, opponent_history=[], playerDetected=["" , False]):
+def player(prev_play, opponent_history=[], scoreTable=np.zeros((3, 3, 3))):
     opponent_history.append(prev_play)
+    
+    #
+    #                     / S
+    #                    / P
+    #                   / R
+    #       R   P   S  / 
+    #   R |   |   |   |
+    #   P |   |   |   |
+    #   S |   |   |   |
+    #
+    
+    responses = {'P': 'S', 'R': 'P', 'S': 'R'}
+    choices = ['R', 'P', 'S']
 
-    # Quincy strategy #
-    QuincyChoices = ["R", "R", "P", "P", "S"]
-    if (not playerDetected[1]) and (len(opponent_history) > 5):
-        diff = [ord(q0) - ord(qn) for q0, qn in zip(QuincyChoices, opponent_history[-5:-1])]
-        if (sum(diff) == 0):
-            playerDetected[1] = True
-            playerDetected[0] = "quincy"
-
-
-    if (playerDetected[1]):
-        if (playerDetected[0] == "quincy"): guess = QuincyChoices[(len(opponent_history)+2) % len(QuincyChoices)]
+    if len(opponent_history) < 4 : 
+        guess = random.choice([0, 1, 2])
     else:
-        guess = random.choice(["R", "P", "S"])
+        lastPlays = [choices.index(opponent_history[-3]), choices.index(opponent_history[-2]), choices.index(opponent_history[-1])]
+        scoreTable[lastPlays[0], lastPlays[1], lastPlays[2]] += 1
+        guess = np.argmax(scoreTable[lastPlays[1], lastPlays[2], :])
 
-    return guess
+    return responses[choices[guess]]

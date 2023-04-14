@@ -3,8 +3,8 @@ from RPS_game import play, mrugesh, abbey, quincy, kris, human, random_player
 from RPS import player
 from unittest import main
 
-play(player, quincy, 1000, True)
-# play(player, abbey, 1000)
+play(player, quincy, 1000)
+# play(player, abbey, 1000, False)
 # play(player, kris, 1000)
 # play(player, mrugesh, 1000)
 
