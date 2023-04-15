@@ -4,6 +4,7 @@ import numpy as np
 def player(prev_play, opponent_history=[], scoreTable=np.zeros((3, 3, 3, 3))):
     if prev_play == '':
         opponent_history.clear()
+        scoreTable[:, :, :, :] = 0
     else:
         opponent_history.append(prev_play)
 
@@ -13,8 +14,8 @@ def player(prev_play, opponent_history=[], scoreTable=np.zeros((3, 3, 3, 3))):
     remember = len(scoreTable.shape)   # How far back in time goes the recall 
 
     if len(opponent_history) < remember : 
-        guess = random.choice(choices)
-        return guess
+        guess = 'P'
+        return responses[guess]
 
     lastPlays = []
     for back in range(1, remember+1):
