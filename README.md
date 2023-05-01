@@ -9,3 +9,5 @@ These strategies are implemented as four different bots:
 - mrugesh
 
 The final program is capable of winning against each of the 4 bots at least 60% of the time.
+
+Run the project here: https://replit.com/@ValentinLopez/boilerplate-rock-paper-scissors
