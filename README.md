@@ -1,5 +1,9 @@
 # Rock Paper Scissors
 
+<p align="center">
+  <img src="./docs/rock-paper-scissors.jpg">
+</p>
+
 This project was part of the [Free Code Camp Machine Learning course](https://www.freecodecamp.org/learn/machine-learning-with-python/#how-neural-networks-work). The goal of this project was to develop an intelligent algorithm capable of adapting its game to beat different strategies in the classic game Rock, Paper, and Scissors. The project utilized four pre-existing strategies, or bots, which were named:
 
 - Quincy
@@ -13,4 +17,4 @@ The matrix keeps track of the frequency of each four sequence plays and incremen
 
 The algorithm achieved a minimum of 60% success rate against each bot, which, while not optimal, is still good enough considering the simplicity of the approach.
 
-## [Run the project on Replit](https://replit.com/@ValentinLopez/boilerplate-rock-paper-scissors) 
+## [Run the project on Replit](https://replit.com/@ValentinLopez/boilerplate-rock-paper-scissors)
